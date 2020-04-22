@@ -1,8 +1,14 @@
+DigitalBank\Config\DriverFactory$1.class
+DigitalBank\Helpers\PasswordGenerator.class
+DigitalBank\Pages\BasePage.class
+DigitalBank\Helpers\ExcelWriter.class
+DigitalBank\Helpers\WaitForElement.class
 DigitalBank\Pages\Login.class
 DigitalBank\Config\DriverFactory.class
+DigitalBank\Helpers\RandomDates.class
+DigitalBank\Tests\RegistrationTest.class
 DigitalBank\Config\DriverSetUp.class
-DigitalBank\Config\DriverFactory$1.class
+DigitalBank\Pages\SecRegForm.class
+DigitalBank\Pages\FirstRegForm.class
 DigitalBank\Config\DriverType.class
-DigitalBank\Pages\BasePage.class
 DigitalBank\Tests\LoginTest.class
-DigitalBank\Helpers\WaitForElement.class
