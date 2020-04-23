@@ -21,7 +21,7 @@ public class DriverSetUp
         driver = getDriver();
     }
 
-    @AfterMethod
+    @AfterTest
     public void tearDown()
     {
         logger.info("Driver is closing");
