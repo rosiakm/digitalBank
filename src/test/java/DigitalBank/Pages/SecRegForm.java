@@ -4,6 +4,9 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static DigitalBank.Config.DriverFactory.getDriver;
+import static DigitalBank.Helpers.Screenshots.takeScreenshot;
+
 public class SecRegForm extends BasePage
 {
     @FindBy(id = "address")
@@ -40,6 +43,7 @@ public class SecRegForm extends BasePage
 
     public void fillSecondRegistrationFormWithValidData()
     {
+        takeScreenshot(getDriver());
         addressInput.sendKeys(faker.address().streetAddress());
         localityInput.sendKeys(faker.address().cityName());
         regionInput.sendKeys(faker.address().state());
@@ -50,6 +54,7 @@ public class SecRegForm extends BasePage
         mobilePhoneInput.sendKeys(phoneNumber);
         workPhoneInput.sendKeys(phoneNumber);
         agreeCheckbox.click();
+        takeScreenshot(getDriver());
         registerButton.click();
     }
 }

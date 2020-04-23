@@ -23,6 +23,14 @@ public class LoginTest extends DriverSetUp
     }
 
     @Test
+    public void logoutTest() throws IOException
+    {
+        login.logInWithValidData(excelReader(new File("loginBase.xlsx")));
+        mv.logOut();
+        login.checkThatLogoutCompleted();
+    }
+
+    @Test
     public void logInWithInvalidDataTest()
     {
         login.logInWithInvalidData();

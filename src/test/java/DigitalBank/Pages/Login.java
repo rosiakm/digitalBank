@@ -1,13 +1,15 @@
 package DigitalBank.Pages;
 
 import DigitalBank.Helpers.Data;
-import DigitalBank.Helpers.ExcelReader;
 import com.github.javafaker.Faker;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
+
+import static DigitalBank.Config.DriverFactory.getDriver;
+import static DigitalBank.Helpers.Screenshots.takeScreenshot;
 
 public class Login extends BasePage
 {
@@ -40,6 +42,7 @@ public class Login extends BasePage
     {
         usernameInput.sendKeys(faker.name().username());
         passwordInput.sendKeys(faker.internet().password());
+        takeScreenshot(getDriver());
         signInButton.click();
     }
 
@@ -50,6 +53,7 @@ public class Login extends BasePage
             usernameInput.sendKeys(login.getUsername());
             passwordInput.sendKeys(login.getPassword());
         }
+        takeScreenshot(getDriver());
         signInButton.click();
     }
 
@@ -62,6 +66,7 @@ public class Login extends BasePage
     {
         String actual = successAlert.getText();
         String expected = "Success";
+        takeScreenshot(getDriver());
         Assertions.assertThat(actual).isEqualTo(expected);
     }
 
@@ -69,7 +74,15 @@ public class Login extends BasePage
     {
         String actual = errorAlert.getText();
         String expected = "Error";
+        takeScreenshot(getDriver());
         Assertions.assertThat(actual).isEqualTo(expected);
+    }
+
+    public void checkThatLogoutCompleted()
+    {
+        String actual = successAlert.getText();
+        String expected = "Logout completed";
+        Assertions.assertThat(actual).contains(expected);
     }
 
 }

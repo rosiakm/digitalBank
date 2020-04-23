@@ -5,11 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-
 import java.util.*;
 
+import static DigitalBank.Config.DriverFactory.getDriver;
 import static DigitalBank.Helpers.PasswordGenerator.generatePassword;
 import static DigitalBank.Helpers.RandomDates.randomDateGenerator;
+import static DigitalBank.Helpers.Screenshots.takeScreenshot;
 
 public class FirstRegForm extends BasePage
 {
@@ -56,6 +57,7 @@ public class FirstRegForm extends BasePage
 
     public List<String> fillRegistrationFormWithValidData()
     {
+        takeScreenshot(getDriver());
         new Select(titleSelect).selectByValue("Mr.");
         firstNameInput.sendKeys(faker.name().firstName());
         lastNameInput.sendKeys(faker.name().lastName());
@@ -70,6 +72,7 @@ public class FirstRegForm extends BasePage
         loginData.add(address);
         loginData.add(password);
 
+        takeScreenshot(getDriver());
         submitButton.click();
 
         return loginData;

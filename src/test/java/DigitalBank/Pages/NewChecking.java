@@ -4,6 +4,9 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static DigitalBank.Config.DriverFactory.getDriver;
+import static DigitalBank.Helpers.Screenshots.takeScreenshot;
+
 public class NewChecking extends BasePage
 {
     @FindBy(css = "strong[class='card-title text-white']")
@@ -30,6 +33,7 @@ public class NewChecking extends BasePage
         individualRadioButton.click();
         accountNameInput.sendKeys("Basic Account");
         initialAmountInput.sendKeys("100.000");
+        takeScreenshot(getDriver());
         submitButton.click();
     }
 
@@ -37,6 +41,7 @@ public class NewChecking extends BasePage
     {
         String actual = newCheckingHeader.getText();
         String expected = "New Checking Account";
+        takeScreenshot(getDriver());
         Assertions.assertThat(actual).isEqualTo(expected);
     }
 }
