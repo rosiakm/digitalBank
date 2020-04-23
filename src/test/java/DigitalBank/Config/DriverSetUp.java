@@ -2,6 +2,7 @@ package DigitalBank.Config;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -20,7 +21,7 @@ public class DriverSetUp
         driver = getDriver();
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown()
     {
         logger.info("Driver is closing");

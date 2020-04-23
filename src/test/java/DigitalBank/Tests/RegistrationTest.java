@@ -21,10 +21,13 @@ public class RegistrationTest extends DriverSetUp
     @Test
     public void registrationTest() throws IOException
     {
-        login.openARegistrationForm();
-        form.fillRegistrationFormWithValidData();
-        excelWriter(form.getLoginData(), new File(path));
-        secForm.fillSecondRegistrationFormWithValidData();
-        login.checkThatSignUpSucceeded();
+        for (int i = 0; i<2; i++)
+        {
+            login.openARegistrationForm();
+            form.fillRegistrationFormWithValidData();
+            excelWriter(form.getLoginData(), new File(path));
+            secForm.fillSecondRegistrationFormWithValidData();
+            login.checkThatSignUpSucceeded();
+        }
     }
 }

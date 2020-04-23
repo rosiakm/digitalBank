@@ -24,13 +24,9 @@ public class ExcelReader
         XSSFSheet sheet = workbook.getSheetAt(0);
 
         Row row = sheet.getRow(1);
-        int cellsNumber = sheet.getRow(0).getLastCellNum();
 
-        for (int i = 0; i <= cellsNumber; i++ )
-        {
-            logData.add(new Data(formatter.formatCellValue(row.getCell(0)),
-                                 formatter.formatCellValue(row.getCell(1))));
-        }
+        logData.add(new Data(formatter.formatCellValue(row.getCell(0)),
+                             formatter.formatCellValue(row.getCell(1))));
 
         return logData;
     }
