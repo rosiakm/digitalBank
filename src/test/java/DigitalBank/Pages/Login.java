@@ -1,9 +1,15 @@
 package DigitalBank.Pages;
 
+import DigitalBank.Helpers.ExcelReader;
 import com.github.javafaker.Faker;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.io.File;
+import java.io.IOException;
+
+import static DigitalBank.Helpers.ExcelReader.excelReader;
 
 public class Login extends BasePage
 {
@@ -36,7 +42,7 @@ public class Login extends BasePage
         signInButton.click();
     }
 
-    public void logInWithValidData()
+    public void logInWithValidData() throws IOException
     {
 
     }
