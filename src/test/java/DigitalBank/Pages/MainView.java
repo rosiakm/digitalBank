@@ -44,25 +44,47 @@ public class MainView extends BasePage
         Assertions.assertThat(actual).contains(expected);
     }
 
-    public void openNewCheckingForm()
+    public NewChecking openNewCheckingForm()
     {
         checkingMenu.click();
         takeScreenshot(getDriver());
         newCheckingLink.click();
+
+        return new NewChecking();
     }
 
-    public void openNewSavingsForm()
+    public NewSavings openNewSavingsForm()
     {
         savingsMenu.click();
         takeScreenshot(getDriver());
         newSavingsLink.click();
+
+        return new NewSavings();
     }
 
-    public void logOut()
+    public Login logOut()
     {
         userAvatar.click();
         takeScreenshot(getDriver());
         logoutButton.click();
         takeScreenshot(getDriver());
+
+        return new Login();
+    }
+
+    public Checking openViewChecking()
+    {
+        checkingMenu.click();
+        viewCheckingLink.click();
+
+        return new Checking();
+    }
+
+    public Savings openViewSavings()
+    {
+        checkingMenu.click();
+        viewSavingsLink.click();
+
+        return new Savings();
     }
 }

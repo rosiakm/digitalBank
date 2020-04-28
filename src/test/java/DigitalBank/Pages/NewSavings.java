@@ -27,7 +27,7 @@ public class NewSavings extends BasePage
     @FindBy(id = "newSavingsSubmit")
     private WebElement submitButton;
 
-    public void openNewSavingsAccount()
+    public Savings openNewSavingsAccount()
     {
         savingsRadioButton.click();
         individualRadioButton.click();
@@ -35,6 +35,10 @@ public class NewSavings extends BasePage
         initialDepositInput.sendKeys("400.000");
         takeScreenshot(getDriver());
         submitButton.click();
+
+        checkThatNewSavingsFormOpened();
+
+        return new Savings();
     }
 
     public void checkThatNewSavingsFormOpened()

@@ -41,7 +41,7 @@ public class SecRegForm extends BasePage
 
     Faker faker = new Faker();
 
-    public void fillSecondRegistrationFormWithValidData()
+    public Login fillSecondRegistrationFormWithValidData()
     {
         takeScreenshot(getDriver());
         addressInput.sendKeys(faker.address().streetAddress());
@@ -56,5 +56,7 @@ public class SecRegForm extends BasePage
         agreeCheckbox.click();
         takeScreenshot(getDriver());
         registerButton.click();
+
+        return new Login();
     }
 }

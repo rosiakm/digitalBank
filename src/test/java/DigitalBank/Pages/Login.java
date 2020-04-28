@@ -38,15 +38,17 @@ public class Login extends BasePage
 
     Faker faker = new Faker();
 
-    public void logInWithInvalidData()
+    public Login logInWithInvalidData()
     {
         usernameInput.sendKeys(faker.name().username());
         passwordInput.sendKeys(faker.internet().password());
         takeScreenshot(getDriver());
         signInButton.click();
+
+        return this;
     }
 
-    public void logInWithValidData(List<Data> logData)
+    public MainView logInWithValidData(List<Data> logData)
     {
         for (Data login : logData)
         {
@@ -55,11 +57,15 @@ public class Login extends BasePage
         }
         takeScreenshot(getDriver());
         signInButton.click();
+
+        return new MainView();
     }
 
-    public void openARegistrationForm()
+    public FirstRegForm openARegistrationForm()
     {
         signUpLink.click();
+
+        return new FirstRegForm();
     }
 
     public void checkThatSignUpSucceeded()

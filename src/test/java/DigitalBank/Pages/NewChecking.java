@@ -27,7 +27,7 @@ public class NewChecking extends BasePage
     @FindBy(css = "button[class='btn btn-primary btn-sm']")
     private WebElement submitButton;
 
-    public void createNewCheckingAccount()
+    public Checking createNewCheckingAccount()
     {
         standardCheckingRadioButton.click();
         individualRadioButton.click();
@@ -35,6 +35,10 @@ public class NewChecking extends BasePage
         initialAmountInput.sendKeys("100.000");
         takeScreenshot(getDriver());
         submitButton.click();
+
+        checkThatNewCheckingFormOpened();
+
+        return new Checking();
     }
 
     public void checkThatNewCheckingFormOpened()

@@ -5,9 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 import static DigitalBank.Config.DriverFactory.getDriver;
+import static DigitalBank.Helpers.ExcelWriter.excelWriter;
 import static DigitalBank.Helpers.PasswordGenerator.generatePassword;
 import static DigitalBank.Helpers.RandomDates.randomDateGenerator;
 import static DigitalBank.Helpers.Screenshots.takeScreenshot;
@@ -54,8 +57,9 @@ public class FirstRegForm extends BasePage
 
     Faker faker = new Faker();
     List<String> loginData = new ArrayList<>();
+    String path = "C:\\Users\\rosiakm\\IdeaProjects\\digitalBank\\loginBase.xlsx";
 
-    public List<String> fillRegistrationFormWithValidData()
+    public SecRegForm fillRegistrationFormWithValidData() throws IOException
     {
         takeScreenshot(getDriver());
         new Select(titleSelect).selectByValue("Mr.");
@@ -64,16 +68,26 @@ public class FirstRegForm extends BasePage
         maleRadioButton.click();
         dateOfBirthInput.sendKeys(randomDateGenerator());
         socialSecurityNumberInput.sendKeys(getSocialSecurityNumber());
+
+        addDataToList();
+
+        takeScreenshot(getDriver());
+        submitButton.click();
+
+        return new SecRegForm();
+    }
+
+    public List<String> addDataToList() throws IOException
+    {
         String address = faker.internet().emailAddress();
         eMailAddressInput.sendKeys(address);
-        String password = generatePassword(12);
+        String password = generatePassword(15);
         passwordInput.sendKeys(password);
         confirmPasswordInput.sendKeys(password);
         loginData.add(address);
         loginData.add(password);
 
-        takeScreenshot(getDriver());
-        submitButton.click();
+        excelWriter(getLoginData(), new File(path));
 
         return loginData;
     }
